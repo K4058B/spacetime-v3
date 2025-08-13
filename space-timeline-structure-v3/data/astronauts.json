@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Juri Gagarin",
+        "agency": "Sowjetunion",
+        "year": 1961
+    },
+    {
+        "name": "Alan Shepard",
+        "agency": "USA",
+        "year": 1961
+    },
+    {
+        "name": "Valentina Tereschkowa",
+        "agency": "Sowjetunion",
+        "year": 1963
+    },
+    {
+        "name": "Neil Armstrong",
+        "agency": "USA",
+        "year": 1969
+    },
+    {
+        "name": "Buzz Aldrin",
+        "agency": "USA",
+        "year": 1969
+    },
+    {
+        "name": "Svetlana Sawizkaja",
+        "agency": "Sowjetunion",
+        "year": 1982
+    },
+    {
+        "name": "Sally Ride",
+        "agency": "USA",
+        "year": 1983
+    },
+    {
+        "name": "Samantha Cristoforetti",
+        "agency": "ESA",
+        "year": 2014
+    }
+]

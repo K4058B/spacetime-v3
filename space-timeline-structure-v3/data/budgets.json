@@ -1,0 +1,30 @@
+[
+    {
+        "country": "USA (NASA)",
+        "budget": 28.5
+    },
+    {
+        "country": "China (CNSA)",
+        "budget": 12.0
+    },
+    {
+        "country": "Japan (JAXA)",
+        "budget": 4.5
+    },
+    {
+        "country": "Russland (Roskosmos)",
+        "budget": 3.0
+    },
+    {
+        "country": "Frankreich (CNES)",
+        "budget": 2.5
+    },
+    {
+        "country": "Deutschland (DLR)",
+        "budget": 2.0
+    },
+    {
+        "country": "Indien (ISRO)",
+        "budget": 1.9
+    }
+]

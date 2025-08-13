@@ -1,0 +1,442 @@
+/* styles.css */
+/* Dieses Stylesheet enthält das überarbeitete Design, inklusive Pre-Loader und Navigation. */
+
+/* Globale Variablen und Standardeinstellungen */
+:root {
+    --bg-color: #0d0e12;
+    --text-color: #f0f4f8;
+    --accent-color: #8a63d2;
+    --timeline-line-color: #3b3e4a;
+    --timeline-dot-color: #4f535f;
+    --timeline-active-dot-color: #e9e2f4;
+    --timeline-active-glow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+    --timeline-item-bg: rgba(255, 255, 255, 0.05);
+    --transition-speed: 0.5s;
+    --font-family: 'Poppins', sans-serif;
+    --nav-bg: rgba(0, 0, 0, 0.7);
+    --nav-hover-color: #fff;
+    --nav-active-color: #fff;
+    --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    position: relative; /* Wichtig für die Navigation */
+}
+
+.hidden {
+    display: none;
+}
+
+/* ------------------- Pre-Loader ------------------- */
+.preloader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1s ease-in-out;
+}
+
+.preloader-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid var(--accent-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+.preloader-text {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ------------------- Header & Title ------------------- */
+.header-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 300;
+    letter-spacing: 2px;
+    opacity: 0;
+    text-shadow: 0 0 10px rgba(138, 99, 210, 0.5);
+    background: linear-gradient(45deg, #f0f4f8, #8a63d2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ------------------- Timeline ------------------- */
+.timeline-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 200vh 0;
+    width: 100%;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: var(--timeline-line-color);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.timeline-items {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-items.left {
+    align-items: flex-end;
+    text-align: right;
+    padding-right: 50px;
+}
+
+.timeline-items.right {
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.timeline-item {
+    width: 100%;
+    background: var(--timeline-item-bg);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.05);
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--transition-speed);
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: var(--timeline-dot-color);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.timeline-items.left .timeline-item::after {
+    right: -56px;
+}
+
+.timeline-items.right .timeline-item::after {
+    left: -56px;
+}
+
+.timeline-item.is-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item.is-active::after {
+    background-color: var(--timeline-active-dot-color);
+    box-shadow: var(--timeline-active-glow);
+}
+
+.timeline-item h3 {
+    font-size: 1.25rem;
+    color: var(--timeline-active-text-color);
+}
+
+.timeline-item p {
+    font-size: 0.9rem;
+    color: #a0a4b0;
+    margin-top: 5px;
+}
+
+/* ------------------- Globe Container ------------------- */
+#globeContainer {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    height: 100vh;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#globeCanvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.globe-ui-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+}
+
+.globe-ui-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.globe-ui-header h3 {
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.globe-toggle button {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.globe-toggle button.active {
+    background: var(--accent-color);
+    color: white;
+}
+
+.globe-legend ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.globe-legend li {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+.globe-legend li:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.satellite-count-display {
+    text-align: right;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.country-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9rem;
+    z-index: 20;
+}
+
+.country-overlay h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+/* ------------------- Budgets Section ------------------- */
+#budgets {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.budgets-content {
+    max-width: 900px;
+    width: 100%;
+}
+
+.budgets-headline {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.budgets-flex-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+#budgetsCanvas {
+    width: 60%;
+    height: 500px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#countryList {
+    width: 40%;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#countryList li {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#countryList li:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+/* ------------------- Fixed Navigation ------------------- */
+.fixed-nav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    gap: 20px;
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--nav-active-color);
+}
+
+/* ------------------- Responsiveness ------------------- */
+@media (max-width: 768px) {
+    .timeline-container {
+        padding: 100vh 0;
+    }
+
+    .timeline-items {
+        width: 100%;
+        gap: 100px;
+    }
+
+    .timeline-items.left, .timeline-items.right {
+        padding: 0 20px;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .timeline-items.left .timeline-item::after, .timeline-items.right .timeline-item::after {
+        left: -10px;
+    }
+
+    #globeContainer {
+        width: 100vw;
+        height: 50vh;
+        position: relative;
+    }
+
+    .globe-ui-panel {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        width: auto;
+    }
+
+    #budgets {
+        padding: 50px 0;
+    }
+
+    .budgets-flex-container {
+        flex-direction: column;
+    }
+
+    #budgetsCanvas, #countryList {
+        width: 90%;
+    }
+}
+
+@media (prefers-reduced-motion) {
+    * {
+        transition-duration: 0.001ms !important;
+        transition-delay: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+        animation-delay: 0.001ms !important;
+    }
+}

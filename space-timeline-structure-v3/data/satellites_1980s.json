@@ -1,0 +1,23 @@
+{
+    "total": 350,
+    "countries": [
+        {
+            "name": "USA",
+            "code": "USA",
+            "count": 180,
+            "orbits": { "LEO": 0.8, "MEO": 0.15, "GEO": 0.05 }
+        },
+        {
+            "name": "Sowjetunion",
+            "code": "RUS",
+            "count": 150,
+            "orbits": { "LEO": 0.9, "MEO": 0.05, "GEO": 0.05 }
+        },
+        {
+            "name": "Andere",
+            "code": "OTHERS",
+            "count": 20,
+            "orbits": { "LEO": 0.6, "MEO": 0.2, "GEO": 0.2 }
+        }
+    ]
+}

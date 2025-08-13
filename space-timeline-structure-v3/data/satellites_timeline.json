@@ -1,0 +1,72 @@
+[
+    {
+        "year": "1957",
+        "items": [
+            {
+                "name": "Sputnik 1",
+                "agency": "Sowjetunion",
+                "desc": "Der erste künstliche Erdsatellit."
+            }
+        ]
+    },
+    {
+        "year": "1960",
+        "items": [
+            {
+                "name": "Tiros 1",
+                "agency": "USA (NASA)",
+                "desc": "Der erste erfolgreiche Wettersatellit."
+            }
+        ]
+    },
+    {
+        "year": "1965",
+        "items": [
+            {
+                "name": "Molnija 1",
+                "agency": "Sowjetunion",
+                "desc": "Erster Kommunikationssatellit in einer hoch-elliptischen Umlaufbahn."
+            }
+        ]
+    },
+    {
+        "year": "1970",
+        "items": [
+            {
+                "name": "Österreichischer Satellit 1",
+                "agency": "Österreich",
+                "desc": "Testflug für die neue Raketentechnologie."
+            }
+        ]
+    },
+    {
+        "year": "1981",
+        "items": [
+            {
+                "name": "Columbia (STS-1)",
+                "agency": "USA (NASA)",
+                "desc": "Erster Flug eines Space Shuttles."
+            }
+        ]
+    },
+    {
+        "year": "1998",
+        "items": [
+            {
+                "name": "International Space Station",
+                "agency": "USA/Russland/ESA",
+                "desc": "Beginn des Aufbaus der ISS."
+            }
+        ]
+    },
+    {
+        "year": "2020",
+        "items": [
+            {
+                "name": "Perseverance Rover",
+                "agency": "USA (NASA)",
+                "desc": "Erfolgreiche Landung auf dem Mars zur Suche nach Lebensspuren."
+            }
+        ]
+    }
+]

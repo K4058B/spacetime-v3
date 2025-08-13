@@ -1,0 +1,89 @@
+<!-- index.html -->
+<!-- Diese Datei stellt die HTML-Struktur der Website bereit. -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Von Sputnik bis zum Mars-rover</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Schriftart für eine professionelle Typografie -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Professional Pre-Loader für eine nahtlose User Experience -->
+    <div id="preloader" class="preloader-container">
+        <div class="preloader-spinner"></div>
+        <div class="preloader-text">Universum wird geladen...</div>
+    </div>
+
+    <!-- Hauptinhalt der Website. Ist zu Beginn ausgeblendet und wird nach dem Laden eingeblendet. -->
+    <div id="mainContent" class="hidden">
+        <div class="header-container" id="welcome">
+            <h1 id="title">Von Sputnik bis zum Mars-rover</h1>
+        </div>
+
+        <main class="timeline-container" id="timeline">
+            <section class="timeline-items left" id="satelliteTimeline"></section>
+            <div class="timeline-line"></div>
+            <section class="timeline-items right" id="astronautTimeline"></section>
+        </main>
+
+        <section id="globeContainer">
+            <div class="globe-ui-panel">
+                <div class="globe-ui-header">
+                    <h3>Satelliten im Orbit</h3>
+                    <div class="globe-toggle">
+                        <button id="toggle1980s">1980er</button>
+                        <button id="toggleToday" class="active">Heute</button>
+                    </div>
+                </div>
+                <div class="globe-legend">
+                    <ul id="countryLegend"></ul>
+                </div>
+                <div id="satelliteCount" class="satellite-count-display">0 Satelliten</div>
+            </div>
+            <div id="globeCanvas"></div>
+            <div id="countryOverlay" class="country-overlay"></div>
+        </section>
+
+        <section id="budgets">
+            <div class="budgets-content">
+                <h2 class="budgets-headline">Raumfahrt-Budgets 2025 (in Mrd. €)</h2>
+                <div class="budgets-flex-container">
+                    <div id="budgetsCanvas"></div>
+                    <ul id="countryList"></ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feste Navigationsleiste für schnelles Scrollen -->
+        <nav class="fixed-nav">
+            <a href="#timeline" class="nav-item">Timeline</a>
+            <a href="#globeContainer" class="nav-item">Satelliten</a>
+            <a href="#budgets" class="nav-item">Budgets</a>
+        </nav>
+    </div>
+
+    <!-- Skripte für Animationen und 3D-Visualisierungen -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.152.2/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="data-loader.js"></script>
+    <script type="module" src="preloader.js"></script>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="globe.js"></script>
+    <script type="module" src="budgets.js"></script>
+
+</body>
+</html>
